@@ -3,6 +3,8 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.*;
 
+import static akka.http.javadsl.server.Directives.route;
+
 public class StorageServer implements Watcher {
 
     private static final String PATH_SERVERS = "localhost:";
@@ -24,6 +26,8 @@ public class StorageServer implements Watcher {
     }
 
     public Route createRoute() {
-        
+        return route(
+                
+        )
     }
 }
