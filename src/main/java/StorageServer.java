@@ -17,5 +17,6 @@ public class StorageServer implements Watcher {
         this.http = http;
         this.actorConfig = actorConfig;
         this.zoo = zoo;
+        path = PATH_SERVERS + port;
     }
 }
