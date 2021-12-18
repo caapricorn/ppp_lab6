@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ZooWatcher implements Watcher {
 
+    final private static String SERVERS = "/servers";
+
     private ZooKeeper zoo;
     private ActorRef storage;
 
