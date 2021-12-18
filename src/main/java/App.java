@@ -28,6 +28,9 @@ public class App {
         try {
             zk = new ZooKeeper(args[INDEX_OF_ZOOKEEPER_ADDRESS], ZOOKEEPER_TIMEOUT, null);
             new ZooWatcher(zk, storage);
+        } catch (InterruptedException | KeeperException e) {
+            e.printStackTrace();
+            System.exit(-1);
         }
     }
 
