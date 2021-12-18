@@ -22,6 +22,11 @@ public class App {
 
         final Http http = Http.get(system);
         ZooKeeper zk = null;
+
+        try {
+            zk = new ZooKeeper(args[INDEX_OF_ZOOKEEPER_ADDRESS], ZOOKEEPER_TIMEOUT, null);
+            new ZooWatcher(zk, storage);
+        }
     }
 
     public static void print(String s) {
