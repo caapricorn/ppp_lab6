@@ -14,6 +14,12 @@ public class ZooWatcher implements Watcher {
     private ZooKeeper zoo;
     private ActorRef storage;
 
+    public ZooWatcher(ZooKeeper zoo, ActorRef storage) throws KeeperException, InterruptedException {
+        this.zoo = zoo;
+        this.storage = storage;
+        sendServers();
+    }
+
     @Override
     public void process(WatchedEvent watchedEvent) {
         try {
