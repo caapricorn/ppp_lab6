@@ -56,7 +56,7 @@ public class App {
                         ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
                         materializer
                 ));
-            } catch () {
+            } catch (InterruptedException | KeeperException e) {
 
             }
         }
