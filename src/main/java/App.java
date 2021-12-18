@@ -39,6 +39,8 @@ public class App {
 
         List<CompletionStage<ServerBinding>> bindings = new ArrayList<>();
 
+        StringBuilder serversInfo = new StringBuilder("Servers online at\n");
+
     }
 
     public static void print(String s) {
