@@ -52,7 +52,10 @@ public class StorageServer implements Watcher {
                                                                             Duration.ofMillis(5000)
                                                                     )
                                                                     .thenCompose(res ->
-                                                                            
+                                                                            http.singleRequest(HttpRequest.create(
+                                                                                    
+                                                                            )))
+
                                                     )
 
                                                 }
