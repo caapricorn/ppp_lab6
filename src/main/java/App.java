@@ -69,6 +69,13 @@ public class App {
 
         print(serversInfo + "\nPress RETURN to stop...");
 
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
     }
 
     public static void print(String s) {
