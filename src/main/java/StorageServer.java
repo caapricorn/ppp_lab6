@@ -29,7 +29,9 @@ public class StorageServer implements Watcher {
     public Route createRoute() {
         return route(
                 path(PATH, () ->
-                        
+                        route(
+                                
+                        )
         )
     }
 }
