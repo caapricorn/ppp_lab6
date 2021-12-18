@@ -2,6 +2,7 @@ import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import org.apache.zookeeper.*;
 
 import static akka.http.javadsl.server.Directives.*;
@@ -43,7 +44,9 @@ public class StorageServer implements Watcher {
                                                     }
                                                     return completeWithFuture(
                                                             Patterns
-                                                            
+                                                                    .ask(
+                                                                            
+                                                                    )
                                                     )
 
                                                 }
