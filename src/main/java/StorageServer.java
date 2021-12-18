@@ -1,5 +1,6 @@
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.*;
 
@@ -11,6 +12,7 @@ public class StorageServer implements Watcher {
     private static final String PATH_SERVERS = "localhost:";
     private static final String URL_QUERY = "url";
     private static final String COUNT_QUERY = "count";
+    private static final String ZERO_COUNT= "0";
 
     private final Http http;
     private final ActorRef actorConfig;
