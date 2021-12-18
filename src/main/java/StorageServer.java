@@ -1,5 +1,6 @@
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.*;
 
 public class StorageServer implements Watcher {
@@ -20,5 +21,9 @@ public class StorageServer implements Watcher {
                 path.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
+    }
+
+    public Route createRoute() {
+        
     }
 }
