@@ -41,6 +41,9 @@ public class StorageServer implements Watcher {
                                                     if (count.equals(ZERO_COUNT)) {
                                                         return completeWithFuture(http.singleRequest(HttpRequest.create(url)));
                                                     }
+                                                    return completeWithFuture(
+                                                            
+                                                    )
 
                                                 }
                         )
