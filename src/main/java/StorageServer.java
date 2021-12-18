@@ -4,6 +4,7 @@ import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.*;
 
 import static akka.http.javadsl.server.Directives.route;
+import static io.netty.handler.codec.http.cookie.CookieHeaderNames.PATH;
 
 public class StorageServer implements Watcher {
 
@@ -27,7 +28,8 @@ public class StorageServer implements Watcher {
 
     public Route createRoute() {
         return route(
-                
+                path(PATH, () ->
+                        
         )
     }
 }
