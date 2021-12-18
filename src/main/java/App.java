@@ -76,6 +76,12 @@ public class App {
             System.exit(-1);
         }
 
+        for (CompletionStage<ServerBinding> binding : bindings) {
+            binding
+                    .thenCompose(ServerBinding::unbind)
+                    .thenAccept(unbound -> system.terminate());
+        }
+
     }
 
     public static void print(String s) {
