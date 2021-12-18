@@ -25,5 +25,9 @@ public class StorageActor extends AbstractActor {
                                 Actor.noSender()
                         )
                 )
+                .match(ZooWatcher.MessageServersList.class,
+                        message -> servers = message.getServers()
+                )
+                .build();
     }
 }
