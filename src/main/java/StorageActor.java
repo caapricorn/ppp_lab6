@@ -1,4 +1,5 @@
 import akka.actor.AbstractActor;
 
-public class StorageActor extends  {
+public class StorageActor extends AbstractActor {
+    
 }
