@@ -1,6 +1,7 @@
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.stream.ActorMaterializer;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
 
@@ -15,6 +16,8 @@ public class App {
         BasicConfigurator.configure();
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+
         
     }
 
