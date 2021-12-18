@@ -1,5 +1,6 @@
 import akka.actor.ActorRef;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -12,6 +13,16 @@ public class ZooWatcher implements Watcher {
 
     private ZooKeeper zoo;
     private ActorRef storage;
+
+    @Override
+    public void process(WatchedEvent watchedEvent) {
+        try {
+            zoo.getChildren(SERVERS, this);
+            sendServers();
+        } catch (KeeperException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void sendServers() throws KeeperException, InterruptedException {
         List<String> servers = new ArrayList<>();
