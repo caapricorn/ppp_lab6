@@ -1,4 +1,5 @@
 import akka.actor.AbstractActor;
+import akka.actor.Actor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,11 @@ public class StorageActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        
+        return receiveBuilder()
+                .match(StorageServer.MessageRandomServerUrl.class,
+                        message -> sender().tell(getRandomServer(),
+                                Actor.noSender()
+                        )
+                )
     }
 }
