@@ -13,4 +13,8 @@ public class App {
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create())
     }
+
+    public static void print(String s) {
+        System.out.println(GREEN + s + RESET);
+    }
 }
