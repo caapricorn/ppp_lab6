@@ -15,4 +15,9 @@ public class StorageActor extends AbstractActor {
                 random.nextInt(servers.size())
         );
     }
+
+    @Override
+    public Receive createReceive() {
+        
+    }
 }
