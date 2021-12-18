@@ -5,6 +5,8 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import org.apache.zookeeper.*;
 
+import java.time.Duration;
+
 import static akka.http.javadsl.server.Directives.*;
 import static io.netty.handler.codec.http.cookie.CookieHeaderNames.PATH;
 
@@ -45,7 +47,9 @@ public class StorageServer implements Watcher {
                                                     return completeWithFuture(
                                                             Patterns
                                                                     .ask(
-                                                                            
+                                                                            actorConfig,
+                                                                            new MessageRandomServerUrl(),
+                                                                            Duration.ofMillis(5000)
                                                                     )
                                                     )
 
