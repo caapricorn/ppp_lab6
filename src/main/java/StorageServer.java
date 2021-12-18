@@ -35,6 +35,10 @@ public class StorageServer implements Watcher {
                                 get( () ->
                                         parameter(URL_QUERY, (url) ->
                                                 parameter(COUNT_QUERY, (count) -> {
+                                                    App.print("Count = " + count + " on " + path);
+                                                    if (count.equals(ZERO_COUNT)) {
+                                                        return completeWithFuture(http.singleRequest(HttpRequest.create(url)));
+                                                    }
 
                                                 }
                         )
