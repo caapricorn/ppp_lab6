@@ -9,6 +9,7 @@ import java.time.Duration;
 
 import static akka.http.javadsl.server.Directives.*;
 import static io.netty.handler.codec.http.cookie.CookieHeaderNames.PATH;
+import static sun.plugin.javascript.navig.JSType.URL;
 
 public class StorageServer implements Watcher {
 
@@ -53,10 +54,15 @@ public class StorageServer implements Watcher {
                                                                     )
                                                                     .thenCompose(res ->
                                                                             http.singleRequest(HttpRequest.create(
-                                                                                    
-                                                                            )))
-
-                                                    )
+                                                                                            String.format(
+                                                                                                    URL,
+                                                                                                    res,
+                                                                                                    url,
+                                                                                                    Integer.parseInt(count) - 1)
+                                                                                    )
+                                                                            )
+                                                                    )
+                                                    );
 
                                                 }
                         )
