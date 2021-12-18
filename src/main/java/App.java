@@ -61,6 +61,10 @@ public class App {
             }
         }
 
+        if(bindings.size() == NO_SERVERS_RUNNING) {
+            System.err.println(ERROR);
+        }
+
     }
 
     public static void print(String s) {
