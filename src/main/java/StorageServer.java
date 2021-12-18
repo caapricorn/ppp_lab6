@@ -6,6 +6,11 @@ import org.apache.zookeeper.ZooKeeper;
 
 public class StorageServer implements Watcher {
 
+    private final Http http;
+    private final ActorRef actorConfig;
+    private final ZooKeeper zoo;
+    private final String path;
+
     public StorageServer (Http http, ActorRef actorConfig, ZooKeeper zoo, String port) throws InterruptedException, KeeperException {
         this.http = http;
         this.actorConfig = actorConfig;
