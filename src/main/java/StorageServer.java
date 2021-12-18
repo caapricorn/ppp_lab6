@@ -81,7 +81,6 @@ public class StorageServer implements Watcher {
         }
     }
 
-
     static class MessageRandomServerUrl {
         public MessageRandomServerUrl() {}
     }
