@@ -26,7 +26,7 @@ public class App {
     private static final int ZOOKEEPER_TIMEOUT = 3000;
     final private static String LOCAL_HOST = "localhost";
 
-    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
+    public static void main(String[] args) throws Exception {
         BasicConfigurator.configure();
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
@@ -57,7 +57,7 @@ public class App {
                         materializer
                 ));
             } catch (InterruptedException | KeeperException e) {
-
+                e.printStackTrace();
             }
         }
 
