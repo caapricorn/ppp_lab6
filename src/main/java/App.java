@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class App {
 
+    public static final String GREEN = "\u001B[32m";
+    public static final String RESET = "\u001B[0m";
+
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         BasicConfigurator.configure();
         ActorSystem system = ActorSystem.create("routes");
