@@ -32,6 +32,8 @@ public class StorageServer implements Watcher {
                 path(PATH, () ->
                         route(
                                 get( () ->
+                                        parameter(URL_QUERY, (url) ->
+                                                
                         )
         )
     }
