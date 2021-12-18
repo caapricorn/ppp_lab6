@@ -74,7 +74,11 @@ public class StorageServer implements Watcher {
 
     @Override
     public void process(WatchedEvent watchedEvent) {
-        
+        try {
+            zoo.getData(path, this, null);
+        } catch (KeeperException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
