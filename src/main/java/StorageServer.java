@@ -72,6 +72,11 @@ public class StorageServer implements Watcher {
         );
     }
 
+    @Override
+    public void process(WatchedEvent watchedEvent) {
+        
+    }
+
 
     static class MessageRandomServerUrl {
         public MessageRandomServerUrl() {}
