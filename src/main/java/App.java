@@ -25,6 +25,8 @@ public class App {
     private static final int INDEX_OF_ZOOKEEPER_ADDRESS = 0;
     private static final int ZOOKEEPER_TIMEOUT = 3000;
     final private static String LOCAL_HOST = "localhost";
+    private static final int NO_SERVERS_RUNNING = 0;
+    private static final String ERROR = "NO SERVERS ARE RUNNING";
 
     public static void main(String[] args) throws Exception {
         BasicConfigurator.configure();
