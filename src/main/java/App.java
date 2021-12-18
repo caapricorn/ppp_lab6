@@ -2,6 +2,7 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
@@ -49,7 +50,11 @@ public class App {
             try {
                 StorageServer server = new StorageServer(http, storage, zk, args[i]);
                 final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
-
+                bindings.add(http.bindAndHandle(
+                        routeFlow,
+                        ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
+                        materializer
+                ));
             } catch () {
 
             }
