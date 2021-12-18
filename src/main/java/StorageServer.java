@@ -6,6 +6,8 @@ import org.apache.zookeeper.ZooKeeper;
 
 public class StorageServer implements Watcher {
 
+    private static final String PATH_SERVERS = "localhost:";
+
     private final Http http;
     private final ActorRef actorConfig;
     private final ZooKeeper zoo;
