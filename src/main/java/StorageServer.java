@@ -3,13 +3,14 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.*;
 
-import static akka.http.javadsl.server.Directives.path;
-import static akka.http.javadsl.server.Directives.route;
+import static akka.http.javadsl.server.Directives.*;
 import static io.netty.handler.codec.http.cookie.CookieHeaderNames.PATH;
 
 public class StorageServer implements Watcher {
 
     private static final String PATH_SERVERS = "localhost:";
+    private static final String URL_QUERY = "url";
+    private static final String COUNT_QUERY = "count";
 
     private final Http http;
     private final ActorRef actorConfig;
@@ -34,7 +35,7 @@ public class StorageServer implements Watcher {
                                 get( () ->
                                         parameter(URL_QUERY, (url) ->
                                                 parameter(COUNT_QUERY, (count) -> {
-                                                    
+
                                                 }
                         )
         )
