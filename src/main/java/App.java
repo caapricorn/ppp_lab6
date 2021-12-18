@@ -1,9 +1,11 @@
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.Http;
 import akka.stream.ActorMaterializer;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 
@@ -18,7 +20,8 @@ public class App {
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-        
+        final Http http = Http.get(system);
+        ZooKeeper zk = null;
     }
 
     public static void print(String s) {
