@@ -1,8 +1,6 @@
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 public class StorageServer implements Watcher {
 
@@ -13,10 +11,14 @@ public class StorageServer implements Watcher {
     private final ZooKeeper zoo;
     private final String path;
 
-    public StorageServer (Http http, ActorRef actorConfig, ZooKeeper zoo, String port) throws InterruptedException, KeeperException {
+    public StorageServer (Http http, ActorRef actorConfig, ZooKeeper zoo, String port) throws Exception {
         this.http = http;
         this.actorConfig = actorConfig;
         this.zoo = zoo;
         path = PATH_SERVERS + port;
+        zoo.create("/servers/" + path,
+                path.getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.EPHEMERAL);
     }
 }
