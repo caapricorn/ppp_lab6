@@ -67,6 +67,8 @@ public class App {
             System.err.println(ERROR);
         }
 
+        print(serversInfo + "\nPress RETURN to stop...");
+
     }
 
     public static void print(String s) {
