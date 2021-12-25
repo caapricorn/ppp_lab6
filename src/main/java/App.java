@@ -49,14 +49,14 @@ public class App {
         StringBuilder serversInfo = new StringBuilder("Servers online at" + NEW_LINE);
 
         try {
-            StorageServer server = new StorageServer(http, storage, zk, args[i]);
+            StorageServer server = new StorageServer(http, storage, zk, args[1]);
             final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
             bindings.add(http.bindAndHandle(
                     routeFlow,
-                    ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
+                    ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[1])),
                     materializer
             ));
-            serversInfo.append("http://localhost:").append(args[i]).append(NEW_LINE);
+            serversInfo.append("http://localhost:").append(args[1]).append(NEW_LINE);
         } catch (InterruptedException | KeeperException e) {
             e.printStackTrace();
         }
