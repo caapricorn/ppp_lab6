@@ -25,6 +25,7 @@ public class App {
     final private static String LOCAL_HOST = "localhost";
     private static final int NO_SERVERS_RUNNING = 0;
     private static final String ERROR = "NO SERVERS ARE RUNNING";
+    private static final String NEW_LINE = "\n";
 
     public static void main(String[] args) throws Exception {
         BasicConfigurator.configure();
@@ -45,7 +46,7 @@ public class App {
 
         List<CompletionStage<ServerBinding>> bindings = new ArrayList<>();
 
-        StringBuilder serversInfo = new StringBuilder("Servers online at\n");
+        StringBuilder serversInfo = new StringBuilder("Servers online at" + NEW_LINE);
 
         for (int i = 1; i < args.length; i++) {
             try {
@@ -56,7 +57,7 @@ public class App {
                         ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
                         materializer
                 ));
-                serversInfo.append("http://localhost:").append(args[i]).append("/\n");
+                serversInfo.append("http://localhost:").append(args[i]).append(NEW_LINE);
             } catch (InterruptedException | KeeperException e) {
                 e.printStackTrace();
             }
@@ -66,7 +67,7 @@ public class App {
             System.err.println(ERROR);
         }
 
-        print(serversInfo + "\nPress RETURN to stop...");
+        print(serversInfo + NEW_LINE + "Press RETURN to stop...");
 
         try {
             System.in.read();
@@ -80,7 +81,6 @@ public class App {
                     .thenCompose(ServerBinding::unbind)
                     .thenAccept(unbound -> system.terminate());
         }
-
     }
 
     public static void print(String s) {
