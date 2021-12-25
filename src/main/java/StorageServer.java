@@ -8,8 +8,6 @@ import org.apache.zookeeper.*;
 import java.time.Duration;
 
 import static akka.http.javadsl.server.Directives.*;
-import static io.netty.handler.codec.http.cookie.CookieHeaderNames.PATH;
-import static sun.plugin.javascript.navig.JSType.URL;
 
 public class StorageServer implements Watcher {
 
