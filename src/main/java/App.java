@@ -58,6 +58,7 @@ public class App {
                         ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
                         materializer
                 ));
+                serversInfo.append("http://localhost:").append(args[i]).append("/\n");
             } catch (InterruptedException | KeeperException e) {
                 e.printStackTrace();
             }
