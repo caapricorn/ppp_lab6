@@ -30,15 +30,27 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App2">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="ppp_lab6" />
-      <option name="PROGRAM_PARAMETERS" value="localhost:2181 3001 3002" />
+      <option name="PROGRAM_PARAMETERS" value="localhost:2181 3001" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="ppp_lab6" />
+      <option name="PROGRAM_PARAMETERS" value="localhost:2181 3002" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.App2" />
+      <item itemvalue="Application.App" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />

@@ -48,19 +48,17 @@ public class App {
 
         StringBuilder serversInfo = new StringBuilder("Servers online at" + NEW_LINE);
 
-        for (int i = 1; i < args.length; i++) {
-            try {
-                StorageServer server = new StorageServer(http, storage, zk, args[i]);
-                final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
-                bindings.add(http.bindAndHandle(
-                        routeFlow,
-                        ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
-                        materializer
-                ));
-                serversInfo.append("http://localhost:").append(args[i]).append(NEW_LINE);
-            } catch (InterruptedException | KeeperException e) {
-                e.printStackTrace();
-            }
+        try {
+            StorageServer server = new StorageServer(http, storage, zk, args[i]);
+            final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
+            bindings.add(http.bindAndHandle(
+                    routeFlow,
+                    ConnectHttp.toHost(LOCAL_HOST, Integer.parseInt(args[i])),
+                    materializer
+            ));
+            serversInfo.append("http://localhost:").append(args[i]).append(NEW_LINE);
+        } catch (InterruptedException | KeeperException e) {
+            e.printStackTrace();
         }
 
         if(bindings.size() == NO_SERVERS_RUNNING) {
