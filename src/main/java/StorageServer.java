@@ -17,6 +17,7 @@ public class StorageServer implements Watcher {
     private static final String URL_PATH = "http://%s/?url=%s&count=%d";
     private static final String ZERO_COUNT= "0";
     private static final String PATH = "";
+    private static final Duration TIMEOUT = Duration.ofMillis(5000);
 
     private final Http http;
     private final ActorRef actorConfig;
@@ -50,7 +51,7 @@ public class StorageServer implements Watcher {
                                                                             .ask(
                                                                                     actorConfig,
                                                                                     new MessageRandomServerUrl(),
-                                                                                    Duration.ofMillis(5000)
+                                                                                    TIMEOUT
                                                                             )
                                                                             .thenCompose(res ->
                                                                                     http.singleRequest(HttpRequest.create(
