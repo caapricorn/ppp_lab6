@@ -20,8 +20,6 @@ import java.util.concurrent.CompletionStage;
 
 public class App {
 
-    public static final String GREEN = "\u001B[32m";
-    public static final String RESET = "\u001B[0m";
     private static final int INDEX_OF_ZOOKEEPER_ADDRESS = 0;
     private static final int ZOOKEEPER_TIMEOUT = 3000;
     final private static String LOCAL_HOST = "localhost";
@@ -86,6 +84,6 @@ public class App {
     }
 
     public static void print(String s) {
-        System.out.println(GREEN + s + RESET);
+        System.out.println(s);
     }
 }

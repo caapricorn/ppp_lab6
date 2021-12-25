@@ -16,6 +16,7 @@ public class StorageServer implements Watcher {
     private static final String COUNT_QUERY = "count";
     private static final String URL_PATH = "http://%s/?url=%s&count=%d";
     private static final String ZERO_COUNT= "0";
+    private static final String PATH = "";
 
     private final Http http;
     private final ActorRef actorConfig;
@@ -35,7 +36,7 @@ public class StorageServer implements Watcher {
 
     public Route createRoute() {
         return route(
-                path("", () ->
+                path(PATH, () ->
                         route(
                                 get( () ->
                                         parameter(URL_QUERY, (url) ->
