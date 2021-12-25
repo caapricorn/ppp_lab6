@@ -16,6 +16,7 @@ public class StorageServer implements Watcher {
     private static final String PATH_SERVERS = "localhost:";
     private static final String URL_QUERY = "url";
     private static final String COUNT_QUERY = "count";
+    private static final String URL_PATH = "http://%s/?url=%s&count=%d";
     private static final String ZERO_COUNT= "0";
 
     private final Http http;
@@ -36,7 +37,7 @@ public class StorageServer implements Watcher {
 
     public Route createRoute() {
         return route(
-                path(PATH, () ->
+                path("", () ->
                         route(
                                 get( () ->
                                         parameter(URL_QUERY, (url) ->
@@ -55,7 +56,7 @@ public class StorageServer implements Watcher {
                                                                             .thenCompose(res ->
                                                                                     http.singleRequest(HttpRequest.create(
                                                                                                     String.format(
-                                                                                                            URL,
+                                                                                                            URL_PATH,
                                                                                                             res,
                                                                                                             url,
                                                                                                             Integer.parseInt(count) - 1)
